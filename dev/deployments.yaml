@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
         - name: newsfeed-crawler
-          image: norcodes/newsfeed-crawler:237c4e1ade47c4b40d01fa12eca785e120a09540
+          image: norcodes/newsfeed-crawler:79ca16067d8c361b3e7e063a83c9b79017d46766
           ports:
             - containerPort: 5000
