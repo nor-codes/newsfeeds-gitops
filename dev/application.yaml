@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: newsfeed-crawler
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/nor-codes/newsfeeds-gitops.git
+    targetRevision: HEAD  #last commit in a repo
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: news-feed-services
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

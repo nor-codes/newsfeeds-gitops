@@ -1,0 +1,28 @@
+# Namespace Definition
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: news-feed-services
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsfeed-crawler-deployment
+  namespace: news-feed-services
+  labels:
+    app: newsfeed-crawler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newsfeed-crawler
+  template:
+    metadata:
+      labels:
+        app: newsfeed-crawler
+    spec:
+      containers:
+        - name: newsfeed-crawler
+          image: norcodes/newsfeed-crawler:latest
+          # ports:
+          #   - containerPort: 8082
