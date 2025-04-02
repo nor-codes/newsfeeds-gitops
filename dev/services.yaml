@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsfeed-crawler-service
+  namespace: news-feed-services
+spec:
+  selector:
+    app: newsfeed-crawler  # This should match the app label in the deployment
+  ports:
+    - protocol: TCP
+      port: 50000   # Exposing port 8082 to external traffic
+      targetPort: 50000  # The port your container listens on (from the logs)
+      nodePort: 30001   # The port exposed on the node
+  type: NodePort
